@@ -26,5 +26,20 @@ namespace RestaurantManager.UniversalWindows
         {
             this.InitializeComponent();
         }
+
+        private void HomeButton_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(MainPage));
+        }
+
+        private void AddToOrder_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void SubmitOrder_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
