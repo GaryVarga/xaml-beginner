@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Windows.UI.Xaml.Resources;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -34,12 +35,21 @@ namespace RestaurantManager.UniversalWindows
 
         private void AddToOrder_Click(object sender, RoutedEventArgs e)
         {
-
+            if (null != AvailableItems.SelectedItem)
+            {
+                Models.DataManager dataManager = (SelectedItems.DataContext as Models.DataManager);
+                dataManager.CurrentlySelectedMenuItems.Add(AvailableItems.SelectedItem.ToString());
+            }
         }
 
         private void SubmitOrder_Click(object sender, RoutedEventArgs e)
         {
-
+            if (0 < SelectedItems.Items.Count)
+            {
+                Models.DataManager dataManager = (SelectedItems.DataContext as Models.DataManager);
+                dataManager.OrderItems.Add(string.Join(", ", SelectedItems.Items));
+                dataManager.CurrentlySelectedMenuItems.Clear();
+            }
         }
     }
 }
